@@ -1,7 +1,7 @@
 package utils.screenrecording;
 
-import com.automate.enums.ConfigProperties;
-import com.automate.utils.configloader.PropertyUtils;
+import enums.ConfigProperties;
+import utils.configloader.PropertyUtils;
 
 public final class ScreenRecordingService {
 

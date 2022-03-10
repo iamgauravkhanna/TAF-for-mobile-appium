@@ -1,9 +1,9 @@
 package utils.configloader;
 
-import com.automate.constants.FrameworkConstants;
-import com.automate.customExceptions.InvalidPathException;
-import com.automate.customExceptions.JsonFileUsageException;
-import com.automate.enums.ConfigJson;
+import constants.FrameworkConstants;
+import customExceptions.InvalidPathException;
+import customExceptions.JsonFileUsageException;
+import enums.ConfigJson;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;

@@ -1,5 +1,9 @@
 package driver;
 
+import constants.FrameworkConstants;
+import customExceptions.DriverInitializationException;
+import enums.ConfigJson;
+import enums.MobileBrowserName;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -11,6 +15,8 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import static utils.configloader.JsonUtils.getConfig;
 
 import java.net.URL;
 
