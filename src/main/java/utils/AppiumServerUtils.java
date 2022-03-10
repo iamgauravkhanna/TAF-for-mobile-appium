@@ -6,9 +6,9 @@ public class AppiumServerUtils {
 
     private static AppiumDriverLocalService appiumDriverLocalService ;
 
-    public void startAppiumServer(){}
+    public static void startAppiumServer(){}
 
-    public void stopAppiumServer(){}
+    public static void stopAppiumServer(){}
 
-    public void checkIfServerIsRunning(){}
+    public static void checkIfServerIsRunning(){}
 }
