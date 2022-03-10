@@ -23,7 +23,7 @@ public class BaseTest {
                       @Optional("androidOnly") String chromeDriverPort, @Optional("androidOnly") String emulator,
                       @Optional("iOSOnly") String wdaLocalPort, @Optional("iOSOnly") String webkitDebugProxyPort){
         if (Objects.isNull(DriverManager.getDriver())) {
-            DriverFactory.initializeDriver(MobilePlatformName.ANDROID, deviceName, udid, Integer.parseInt(systemPort), emulator);
+            DriverFactory.initializeDriver(MobilePlatformName.ANDROID, deviceName, udid, 7777, emulator);
         }
         ScreenRecordingService.startRecording();
     }

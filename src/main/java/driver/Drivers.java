@@ -28,15 +28,16 @@ public class Drivers {
         try {
             DesiredCapabilities capability = new DesiredCapabilities();
             capability.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
-            capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);
+            capability.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
             capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2); // Specific to Android
-            capability.setCapability(MobileCapabilityType.UDID, udid); // To uniquely identify device
-            capability.setCapability(MobileCapabilityType.APP, FrameworkConstants.getAndroidApkPath());
+            //capability.setCapability(MobileCapabilityType.UDID, udid); // To uniquely identify device
+            //capability.setCapability(MobileCapabilityType.APP, FrameworkConstants.getAndroidApkPath());
             capability.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, getConfig(ConfigJson.APP_PACKAGE));
             capability.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, getConfig(ConfigJson.APP_ACTIVITY));
-            capability.setCapability(AndroidMobileCapabilityType.SYSTEM_PORT, port); // To set different port for each thread - This port is used to communicate with UiAutomator2
+            capability.setCapability(AndroidMobileCapabilityType.SYSTEM_PORT, 7878); // To set different port for each thread - This port is used to communicate with UiAutomator2
+            capability.setCapability("noReset", "true"); // this should be depenedent on property
             if (emulator.equalsIgnoreCase("yes")) {
-                capability.setCapability(AndroidMobileCapabilityType.AVD, device_name);
+                //capability.setCapability(AndroidMobileCapabilityType.AVD, device_name);
                 capability.setCapability(AndroidMobileCapabilityType.AVD_LAUNCH_TIMEOUT, Integer.parseInt(getConfig(ConfigJson.AVD_LAUNCH_TIMEOUT)));
             }
             return new AndroidDriver<>(new URL(getConfig(ConfigJson.APPIUM_URL)), capability);
