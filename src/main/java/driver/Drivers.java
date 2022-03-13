@@ -16,7 +16,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static utils.configloader.JsonUtils.getConfig;
+import static json.JsonUtils.getConfig;
 
 import java.net.URL;
 
@@ -28,7 +28,7 @@ public class Drivers {
         try {
             DesiredCapabilities capability = new DesiredCapabilities();
             capability.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
-            capability.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
+            capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);
             capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2); // Specific to Android
             //capability.setCapability(MobileCapabilityType.UDID, udid); // To uniquely identify device
             //capability.setCapability(MobileCapabilityType.APP, FrameworkConstants.getAndroidApkPath());
@@ -70,12 +70,14 @@ public class Drivers {
         try {
             DesiredCapabilities capability = new DesiredCapabilities();
             capability.setCapability(CapabilityType.PLATFORM_NAME, Platform.IOS);
-            capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);
-            capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
-            capability.setCapability(MobileCapabilityType.UDID, udid);
-            capability.setCapability(MobileCapabilityType.APP, FrameworkConstants.getIosAppPath());
-            capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
-            capability.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, port); // To set different port for each thread - This port is used to communicate with WebDriverAgent driver
+            //capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);
+            //capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
+            //capability.setCapability(MobileCapabilityType.UDID, udid);
+            //capability.setCapability(MobileCapabilityType.APP, FrameworkConstants.getIosAppPath());
+            //capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
+            //capability.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, port); // To set different port for each thread - This port is used to communicate with WebDriverAgent driver
+            capability.setCapability(IOSMobileCapabilityType.VERSION,"15.0");
+            capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.apple.Preferences");
 
             return new IOSDriver<>(new URL(getConfig(ConfigJson.APPIUM_URL)), capability);
         } catch (Exception e) {

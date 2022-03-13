@@ -13,7 +13,9 @@ public class DriverFactory {
     private DriverFactory() {}
 
     public static void initializeDriver(MobilePlatformName mobilePlatformName, String devicename, String udid, int port, String emulator) {
+
         AppiumDriver driver;
+
         switch (mobilePlatformName) {
             case ANDROID:
                 driver = Drivers.createAndroidDriverForNativeApp(devicename, udid, port, emulator);

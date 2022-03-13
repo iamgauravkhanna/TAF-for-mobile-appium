@@ -1,10 +1,11 @@
 package constants;
 
 import enums.ConfigProperties;
-import utils.configloader.PropertyUtils;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import property.PropertyUtils;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -14,9 +15,8 @@ import java.time.format.DateTimeFormatter;
 public final class FrameworkConstants {
 
     public static final String PROJECT_PATH = System.getProperty("user.dir");
-
     @Getter
-    private static final String appiumServerHost = "127.0.0.1";
+    public static final String appiumServerHost = "127.0.0.1";
     @Getter
     private static final int appiumServerPort = 4723;
     @Getter
@@ -28,9 +28,9 @@ public final class FrameworkConstants {
     @Getter
     private static final String chromedriverExecutablesPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "executables" + File.separator + "chromedriver.exe";
     @Getter
-    private static final String configPropertiesPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "config" + File.separator + "config.properties";
+    private static final String configPropertiesPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "config" + File.separator + System.getProperty("platform") + File.separator + System.getProperty("project") + File.separator + "config.properties";
     @Getter
-    private static final String configJsonPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "config" + File.separator + "config.json";
+    private static final String configJsonPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "config" + File.separator + System.getProperty("platform") + File.separator + System.getProperty("project") + File.separator +  "config.json";
     @Getter
     private static final long explicitWait = 15;
     @Getter

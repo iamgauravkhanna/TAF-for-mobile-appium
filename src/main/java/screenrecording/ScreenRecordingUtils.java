@@ -1,4 +1,4 @@
-package utils.screenrecording;
+package screenrecording;
 
 import constants.FrameworkConstants;
 import driver.DriverManager;
@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public final class ScreenRecordingUtils {
+public class ScreenRecordingUtils {
 
     private ScreenRecordingUtils() {
     }

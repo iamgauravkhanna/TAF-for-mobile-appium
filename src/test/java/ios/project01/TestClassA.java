@@ -1,4 +1,4 @@
-package android.project01;
+package ios.project01;
 
 import base.BaseTest;
 import org.testng.annotations.Test;
@@ -7,7 +7,7 @@ import screens.android.project01.Start;
 
 public class TestClassA extends BaseTest {
 
-    @Test(description = "Test Case #1", enabled = true)
+    @Test(description = "Find Element Example",enabled = false)
     public void TestA(){
 
         Start start = new Start();

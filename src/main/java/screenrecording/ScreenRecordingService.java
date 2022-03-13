@@ -1,11 +1,11 @@
-package utils.screenrecording;
+package screenrecording;
 
 import enums.ConfigProperties;
-import utils.configloader.PropertyUtils;
+import property.PropertyUtils;
 
-public final class ScreenRecordingService {
+public class ScreenRecordingService {
 
-    private ScreenRecordingService() {
+    public ScreenRecordingService() {
     }
 
     public static void startRecording() {

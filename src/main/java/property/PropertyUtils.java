@@ -1,15 +1,14 @@
-package utils.configloader;
+package property;
 
 import constants.FrameworkConstants;
 import customExceptions.PropertyFileUsageException;
 import enums.ConfigProperties;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Objects;
 import java.util.Properties;
 
-public final class PropertyUtils {
+public class PropertyUtils {
 
     private PropertyUtils() {
     }

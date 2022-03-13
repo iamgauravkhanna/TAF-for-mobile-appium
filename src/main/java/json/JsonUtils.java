@@ -1,4 +1,4 @@
-package utils.configloader;
+package json;
 
 import constants.FrameworkConstants;
 import customExceptions.InvalidPathException;
@@ -29,6 +29,7 @@ public final class JsonUtils {
     }
 
     static void readJson(String jsonPath) {
+        System.out.println("jsonapth = " + jsonPath);
         try {
             map = new ObjectMapper().readValue(new File(jsonPath),
                     new TypeReference<HashMap<String, String>>() {

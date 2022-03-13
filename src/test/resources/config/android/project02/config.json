@@ -1,0 +1,8 @@
+{
+  "app_package": "io.appium.android.apis",
+  "app_activity": "io.appium.android.apis.ApiDemos",
+  "appium_url": "http://127.0.0.1:4723/wd/hub",
+  "avd_launch_timeout": 180000,
+  "bundle_id": "",
+  "url": "https://www.google.com/"
+}

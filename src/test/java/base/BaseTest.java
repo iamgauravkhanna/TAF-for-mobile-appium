@@ -5,25 +5,27 @@ import enums.MobilePlatformName;
 import factory.DriverFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import screenrecording.ScreenRecordingService;
 import utils.AppiumServerUtils;
-import utils.screenrecording.ScreenRecordingService;
 
 import java.util.Objects;
 
 public class BaseTest {
 
     @BeforeSuite(alwaysRun = true)
-    public void beforeSuiteSetup(){
-        System.out.println("Steps to be performed before starting suite");
+    public void beforeSuiteSetup() {
         AppiumServerUtils.startAppiumServer();
     }
 
     @BeforeMethod
-    public void setup(String platformName, String udid, String deviceName, @Optional("androidOnly") String systemPort,
-                      @Optional("androidOnly") String chromeDriverPort, @Optional("androidOnly") String emulator,
-                      @Optional("iOSOnly") String wdaLocalPort, @Optional("iOSOnly") String webkitDebugProxyPort){
-        if (Objects.isNull(DriverManager.getDriver())) {
-            DriverFactory.initializeDriver(MobilePlatformName.ANDROID, deviceName, udid, 7777, emulator);
+    public void setup() {
+
+        String whichPlatform = System.getProperty("platform");
+
+        if (whichPlatform.toUpperCase().equals("ANDROID")){
+            if (Objects.isNull(DriverManager.getDriver())) {
+                DriverFactory.initializeDriver(MobilePlatformName.ANDROID, "emulator-5554", "myudid", 7777, "yes");
+            }
         }
         ScreenRecordingService.startRecording();
     }
