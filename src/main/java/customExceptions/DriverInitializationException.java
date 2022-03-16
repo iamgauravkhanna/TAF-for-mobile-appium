@@ -1,6 +1,7 @@
 package customExceptions;
 
-public class DriverInitializationException extends FrameworkException{
+public class DriverInitializationException extends FrameworkException {
+
     public DriverInitializationException(String message) {
         super(message);
     }

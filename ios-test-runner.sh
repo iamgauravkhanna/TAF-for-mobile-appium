@@ -1,2 +1,3 @@
 mvn clean install test \
--Dplatform=ios
+-Dplatform=ios \
+-Dproject=project01

@@ -1,6 +1,6 @@
 package property;
 
-import constants.FrameworkConstants;
+import constants.TestConstants;
 import customExceptions.PropertyFileUsageException;
 import enums.ConfigProperties;
 
@@ -24,7 +24,7 @@ public class PropertyUtils {
     }
 
     public static String getPropertyValue(ConfigProperties key) {
-        loadProperties(FrameworkConstants.getConfigPropertiesPath());
+        loadProperties(TestConstants.CONFIG_PROPERTIES_PATH);
         if (Objects.isNull(property.getProperty(key.name().toLowerCase())) || Objects.isNull(key.name().toLowerCase())) {
             throw new PropertyFileUsageException("Property name - " + key + " is not found. Please check the config.properties");
         }

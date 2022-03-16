@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression Suite - Project 01">
+    
+    <listeners>
+        <listener class-name="listeners.ITestListenerImpl"></listener>
+        <listener class-name="listeners.IExecutionListenerImpl"></listener>
+    </listeners>
+
+    <test name="Project 01 - Test 01" parallel="methods"
+          thread-count="1">
+        <classes>
+            <class name="android.project01.TestClassA" />
+        </classes>
+    </test>
+
+</suite>

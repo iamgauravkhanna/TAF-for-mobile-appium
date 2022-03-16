@@ -1,12 +1,13 @@
 package json;
 
-import constants.FrameworkConstants;
+import constants.TestConstants;
 import customExceptions.InvalidPathException;
 import customExceptions.JsonFileUsageException;
 import enums.ConfigJson;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
+import logger.MyLogger;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,14 +23,13 @@ public final class JsonUtils {
 
     public static String getValue(String key) {
         try {
-            return JsonPath.read(new File(FrameworkConstants.getConfigJsonPath()), key);
+            return JsonPath.read(new File(TestConstants.CONFIG_JSON_PATH), key);
         } catch (IOException e) {
             throw new InvalidPathException("Check the config.json");
         }
     }
 
     static void readJson(String jsonPath) {
-        System.out.println("jsonapth = " + jsonPath);
         try {
             map = new ObjectMapper().readValue(new File(jsonPath),
                     new TypeReference<HashMap<String, String>>() {
@@ -40,10 +40,11 @@ public final class JsonUtils {
     }
 
     public static String getConfig(ConfigJson key) {
-        readJson(FrameworkConstants.getConfigJsonPath());
+        readJson(TestConstants.CONFIG_JSON_PATH);
         if (Objects.isNull(map.get(key.name().toLowerCase()))) {
             throw new JsonFileUsageException("Property name - " + key + " is not found. Please check the config.json");
         }
+        MyLogger.INFO("returing property : " + key.name().toLowerCase());
         return map.get(key.name().toLowerCase());
     }
 }

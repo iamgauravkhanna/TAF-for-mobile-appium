@@ -7,10 +7,10 @@ import screens.android.project01.Start;
 
 public class TestClassA extends BaseTest {
 
-    @Test(description = "Find Element Example",enabled = false)
+    @Test(description = "Find Element Example",enabled = true)
     public void TestA(){
 
         Start start = new Start();
-        start.performSanity();
+        start.verifyOptions();
     }
 }

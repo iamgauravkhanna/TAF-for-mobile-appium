@@ -3,6 +3,7 @@ package base;
 import driver.DriverManager;
 import enums.MobilePlatformName;
 import factory.DriverFactory;
+import org.openqa.selenium.Platform;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import screenrecording.ScreenRecordingService;
@@ -22,11 +23,17 @@ public class BaseTest {
 
         String whichPlatform = System.getProperty("platform");
 
-        if (whichPlatform.toUpperCase().equals("ANDROID")){
+        if (whichPlatform.equalsIgnoreCase(MobilePlatformName.ANDROID.name())){
             if (Objects.isNull(DriverManager.getDriver())) {
                 DriverFactory.initializeDriver(MobilePlatformName.ANDROID, "emulator-5554", "myudid", 7777, "yes");
             }
         }
+        else if(whichPlatform.equalsIgnoreCase(MobilePlatformName.IOS.name())){
+            if (Objects.isNull(DriverManager.getDriver())) {
+                DriverFactory.initializeDriver(MobilePlatformName.IOS, "iPhone 13 Pro Max", "myudid", 4723, "yes");
+            }
+        }
+
         ScreenRecordingService.startRecording();
     }
 

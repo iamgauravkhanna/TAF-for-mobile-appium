@@ -11,10 +11,12 @@ public class Start extends BaseScreen {
     @AndroidFindBy(accessibility="Views")
     private static MobileElement view;
 
-    public void performSanity() {
+    public void verifyOptions() {
+        isElementDisplayed(view);
+    }
 
-        Boolean isDisplayed;
-        isDisplayed = view.isDisplayed();
-        Assert.assertEquals(true,isDisplayed);
+    public void clickOnView(){
+        verifyOptions();
+        click(view);
     }
 }

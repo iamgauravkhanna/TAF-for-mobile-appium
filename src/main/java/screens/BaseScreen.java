@@ -14,13 +14,33 @@ public class BaseScreen {
 
     protected void enterValueAndPressEnter(MobileElement element, String value, String elementName) {
         try {
-            doClear(element);
+            clear(element);
             element.sendKeys(value, Keys.ENTER);
         } catch (Exception e) {
         }
     }
 
-    protected void doClear(MobileElement element) {
+    protected void clear(MobileElement element) {
         element.clear();
+    }
+
+    protected void click(MobileElement element){
+        element.click();
+    }
+
+    protected boolean isElementDisplayed(MobileElement element) {
+        return element.isDisplayed();
+    }
+
+    protected String getElementAttribute(MobileElement element, String attributeName) {
+        return element.getAttribute(attributeName);
+    }
+
+    protected boolean isElementSelected(MobileElement element) {
+        return element.isSelected();
+    }
+
+    protected boolean isElementEnabled(MobileElement element) {
+        return element.isEnabled();
     }
 }
