@@ -51,14 +51,14 @@ public class Drivers {
             capability.setCapability(CapabilityType.PLATFORM_NAME, Platform.ANDROID);
             capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);
             capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
-            capability.setCapability(MobileCapabilityType.UDID, udid);
+            //capability.setCapability(MobileCapabilityType.UDID, udid);
             capability.setCapability(CapabilityType.BROWSER_NAME, MobileBrowserName.CHROME);
             capability.setCapability(AndroidMobileCapabilityType.CHROMEDRIVER_PORT, port); // For Web view/Chrome browser to launch the browser on different port
+            capability.setCapability("noReset", "true"); // this should be depenedent on property
             if (emulator.equalsIgnoreCase("yes")) {
-                capability.setCapability(AndroidMobileCapabilityType.AVD, device_name);
+                //capability.setCapability(AndroidMobileCapabilityType.AVD, device_name);
                 capability.setCapability(AndroidMobileCapabilityType.AVD_LAUNCH_TIMEOUT, Integer.parseInt(getConfig(ConfigJson.AVD_LAUNCH_TIMEOUT)));
             }
-
             return new AndroidDriver<>(new URL(getConfig(ConfigJson.APPIUM_URL)), capability);
         } catch (Exception e) {
             throw new DriverInitializationException("Failed to initialize driver. Please check the desired capabilities", e);

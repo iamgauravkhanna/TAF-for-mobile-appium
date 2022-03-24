@@ -23,17 +23,14 @@ public class BaseTest {
 
         String whichPlatform = System.getProperty("platform");
 
-        if (whichPlatform.equalsIgnoreCase(MobilePlatformName.ANDROID.name())){
-            if (Objects.isNull(DriverManager.getDriver())) {
+        if (Objects.isNull(DriverManager.getDriver())) {
+            if (whichPlatform.equalsIgnoreCase(MobilePlatformName.ANDROID.name())) {
                 DriverFactory.initializeDriver(MobilePlatformName.ANDROID, "emulator-5554", "myudid", 7777, "yes");
-            }
-        }
-        else if(whichPlatform.equalsIgnoreCase(MobilePlatformName.IOS.name())){
-            if (Objects.isNull(DriverManager.getDriver())) {
+            } else if (whichPlatform.equalsIgnoreCase(MobilePlatformName.IOS.name())) {
                 DriverFactory.initializeDriver(MobilePlatformName.IOS, "iPhone 13 Pro Max", "myudid", 4723, "yes");
-            }
+            } else if (whichPlatform.equalsIgnoreCase(MobilePlatformName.ANDROID_WEB.name()))
+                DriverFactory.initializeDriver(MobilePlatformName.ANDROID_WEB, "emulator-5554", "myudid", 8760, "yes");
         }
-
         ScreenRecordingService.startRecording();
     }
 

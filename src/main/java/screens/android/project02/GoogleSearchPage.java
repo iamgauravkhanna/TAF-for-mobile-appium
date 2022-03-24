@@ -10,6 +10,7 @@ public class GoogleSearchPage extends BaseScreen {
     private static MobileElement txtFieldSearch;
 
     public GoogleSearchPage performSearch(String searchText) {
+
         enterValueAndPressEnter(txtFieldSearch, searchText, "Search text box");
         return new GoogleSearchPage();
     }

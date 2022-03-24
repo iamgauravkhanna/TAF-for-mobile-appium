@@ -1,4 +1,5 @@
 mvn clean install test \
--Dplatform=android \
--Dproject=project01 \
+-DoperatingSystem=android \
+-Dplatform=android_web \
+-Dproject=project02 \
 -DSuiteFilePath=src/test/resources/suites/android/master.xml
