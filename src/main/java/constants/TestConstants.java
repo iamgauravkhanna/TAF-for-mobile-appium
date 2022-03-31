@@ -76,4 +76,7 @@ public final class TestConstants {
     public static final String SEARCH_RESULTS_PAGE_TITLE = "Appium - Google Search";
 
     public static final String LOG4J_PATH = System.getProperty("user.dir") + File.separator + "log4j.properties";
+
+    public static final String TEXT = "text";
+    public static final String LABEL = "label";
 }

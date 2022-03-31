@@ -1,7 +1,9 @@
 package screens;
 
+import constants.TestConstants;
 import driver.DriverManager;
 import enums.MobileFindBy;
+import enums.MobilePlatformName;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import logger.MyLogger;
@@ -10,11 +12,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseScreen {
 
     protected BaseScreen() {
         PageFactory.initElements(new AppiumFieldDecorator(DriverManager.getDriver()), this);
+    }
+
+    public void getUrl(String url){
+        DriverManager.getDriver().get(url);
+    }
+
+    protected void sendKeys(MobileElement mobileElement, String text) {
+        waitForVisibility(mobileElement);
+        clear(mobileElement);
+        MyLogger.infoExtentStep("Filling data in <b>" + mobileElement.getAttribute("name") + "</b>");
+        mobileElement.sendKeys(text);
+    }
+
+    public void waitForVisibility(MobileElement mobileElement) {
+        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), 10);
+        wait.until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
     private MobileElement getMobileElement(String mobileElement, MobileFindBy mobileFindBy) {
@@ -44,10 +64,12 @@ public class BaseScreen {
     }
 
     protected void clear(MobileElement element) {
+        MyLogger.infoExtentStep("Clearing Text from Input");
         element.clear();
     }
 
     protected void click(MobileElement element){
+        MyLogger.infoExtentStep("Click on Element");
         element.click();
     }
 
@@ -91,6 +113,19 @@ public class BaseScreen {
                 .doubleTap(element)
                 .perform();
         MyLogger.infoExtentStep("Double tap on element : " + element);
+    }
+
+    public String getElementText(MobileElement mobileElement) {
+
+        waitForVisibility(mobileElement);
+
+        String whichPlatform = System.getProperty("platform");
+        if (whichPlatform.contains("android")) {
+            return mobileElement.getAttribute(TestConstants.TEXT);
+        } else if (whichPlatform.contains("ios")) {
+            return mobileElement.getAttribute(TestConstants.LABEL);
+        }
+        return null;
     }
 
 }

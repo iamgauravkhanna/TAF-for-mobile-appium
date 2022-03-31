@@ -9,10 +9,7 @@ public class GoogleSearchPage extends BaseScreen {
     @FindBy(xpath="//input[@aria-label='Search']")
     private static MobileElement txtFieldSearch;
 
-    public GoogleSearchPage performSearch(String searchText) {
-
+    public void performSearch(String searchText) {
         enterValueAndPressEnter(txtFieldSearch, searchText, "Search text box");
-        return new GoogleSearchPage();
     }
-
 }

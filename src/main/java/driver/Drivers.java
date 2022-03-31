@@ -52,6 +52,8 @@ public class Drivers {
             capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);
             capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
             //capability.setCapability(MobileCapabilityType.UDID, udid);
+//            capability.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, getConfig(ConfigJson.APP_PACKAGE));
+//            capability.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, getConfig(ConfigJson.APP_ACTIVITY));
             capability.setCapability(CapabilityType.BROWSER_NAME, MobileBrowserName.CHROME);
             capability.setCapability(AndroidMobileCapabilityType.CHROMEDRIVER_PORT, port); // For Web view/Chrome browser to launch the browser on different port
             capability.setCapability("noReset", "true"); // this should be depenedent on property
