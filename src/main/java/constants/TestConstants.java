@@ -17,11 +17,11 @@ public final class TestConstants {
 
     public static final String PROJECT_PATH = System.getProperty("user.dir");
 
-    public static final String appiumServerHost = "127.0.0.1";
+    public static final String APPIUM_SERVER_HOST = "127.0.0.1";
 
-    private static final int appiumServerPort = 4723;
+    public static final int APPIUM_SERVER_PORT = 4723;
 
-    private static final String appiumJsPath = System.getenv("APPIUM_HOME") + File.separator + "main.js";
+    public static final String APPIUM_JS_PATH = System.getenv("APPIUM_HOME") + File.separator + "main.js";
 
     private static final String androidApkPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "app" + File.separator + "Android.SauceLabs.Mobile.Sample.app.2.7.1.apk";
 
@@ -33,11 +33,11 @@ public final class TestConstants {
 
     public static final long EXPLICIT_WAIT = 15;
 
-    private static final String screenshotPath = PROJECT_PATH + File.separator + "screenshots";
+    public static final String SCREENSHOTS_PATH = System.getProperty("logsDirectory") + File.separator + "screenshots";
 
     private static final String testDataFilePath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "data" + File.separator + "testdata.xlsx";
 
-    private static final String nodeJsPath = System.getenv("NODE_HOME") + File.separator + "node.exe";
+    public static final String NODE_JS_PATH = System.getenv("PATH") + File.separator + "node";
 
     private static final String extentReportPath = PROJECT_PATH + File.separator + "extent-test-report";
 

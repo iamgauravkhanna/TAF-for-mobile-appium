@@ -7,7 +7,7 @@ import screens.BaseScreen;
 
 public class ViewScreen extends BaseScreen {
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc=\"Controls\"]")
+    @AndroidFindBy(accessibility="Controls")
     private MobileElement controls;
 
     public void clickOption() {

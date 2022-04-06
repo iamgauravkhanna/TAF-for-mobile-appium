@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import screens.BaseScreen;
+import screenshot.ScreenshotUtils;
 
 public class StartScreen extends BaseScreen {
 
@@ -12,6 +13,7 @@ public class StartScreen extends BaseScreen {
     private static MobileElement view;
 
     public void verifyOptions() {
+        ScreenshotUtils.captureScreenshotAsFile();
         isElementDisplayed(view);
     }
 

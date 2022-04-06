@@ -14,6 +14,7 @@ import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import screenshot.ScreenshotService;
 
 public class BaseScreen {
 
@@ -70,6 +71,7 @@ public class BaseScreen {
 
     protected void click(MobileElement element){
         MyLogger.infoExtentStep("Click on Element");
+        ScreenshotService.captureScreenshotAsFile();
         element.click();
     }
 

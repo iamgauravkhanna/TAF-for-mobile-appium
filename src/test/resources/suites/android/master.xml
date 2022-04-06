@@ -10,9 +10,9 @@
     <test name="Project 01 - Test 01" parallel="methods"
           thread-count="1">
         <classes>
-<!--            <class name="android.project01.TestClassA" />-->
+            <class name="android.project01.TestClassA" />
 <!--            <class name="android.project02.GoogleTest"></class>-->
-            <class name="android.project03.SwagLabsTest"></class>
+<!--            <class name="android.project03.SwagLabsTest"></class>-->
         </classes>
     </test>
 

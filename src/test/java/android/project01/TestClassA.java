@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import screens.android.project01.StartScreen;
 import screens.android.project01.ViewScreen;
 
-
 public class TestClassA extends BaseTest {
 
     @Test(description = "Test Case #1", enabled = true)
