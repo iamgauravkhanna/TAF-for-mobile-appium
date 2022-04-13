@@ -4,6 +4,7 @@ import constants.TestConstants;
 import driver.DriverManager;
 import io.appium.java_client.screenrecording.CanRecordScreen;
 import org.apache.commons.codec.binary.Base64;
+import utils.JavaUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,7 +21,7 @@ public class ScreenRecordingUtils {
 
     public static void stopScreenRecording(String methodName) {
         String recordedVideoFile = ((CanRecordScreen) DriverManager.getDriver()).stopRecordingScreen();
-        String pathToWriteVideoFile = TestConstants.getScreenRecordingsPath() + File.separator + methodName + ".mp4";
+        String pathToWriteVideoFile = TestConstants.getScreenRecordingsPath() + File.separator + methodName + "-" +  JavaUtil.getCurrentTimeStamp() + ".mp4";
         writeToOutputStream(pathToWriteVideoFile, recordedVideoFile);
     }
 
