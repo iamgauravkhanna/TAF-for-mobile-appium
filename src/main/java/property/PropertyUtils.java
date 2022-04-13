@@ -30,4 +30,12 @@ public class PropertyUtils {
         }
         return property.getProperty(key.name().toLowerCase());
     }
+
+    public static String getPropertyValue(String key) {
+        loadProperties(TestConstants.CONFIG_PROPERTIES_PATH);
+        if (Objects.isNull(property.getProperty(key.toLowerCase())) || Objects.isNull(key.toLowerCase())) {
+            throw new PropertyFileUsageException("Property name - " + key + " is not found. Please check the config.properties");
+        }
+        return property.getProperty(key.toLowerCase());
+    }
 }

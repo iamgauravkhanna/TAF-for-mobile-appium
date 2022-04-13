@@ -2,12 +2,14 @@ package android.project01;
 
 import base.BaseTest;
 import org.testng.annotations.Test;
+import screens.android.project01.ControlScreen;
+import screens.android.project01.DarkThemeScreen;
 import screens.android.project01.StartScreen;
-import screens.android.project01.ViewScreen;
+import screens.android.project01.ViewsScreen;
 
 public class TestClassA extends BaseTest {
 
-    @Test(description = "Test Case #1", enabled = true)
+    @Test(description = "Test Case #1 Verify View Screen", enabled = false)
     public void SanityTestA(){
 
         StartScreen start = new StartScreen();
@@ -18,7 +20,11 @@ public class TestClassA extends BaseTest {
     public void SanityTestB(){
         StartScreen start = new StartScreen();
         start.clickOnView();
-        ViewScreen view = new ViewScreen();
+        ViewsScreen view = new ViewsScreen();
         view.clickOption();
+        ControlScreen controlScreen = new ControlScreen();
+        controlScreen.selectTheme();
+        DarkThemeScreen darkThemeScreen = new DarkThemeScreen();
+        darkThemeScreen.selectCheckBox();
     }
 }

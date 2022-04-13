@@ -59,7 +59,7 @@ public final class TestConstants {
         }
     }
 
-    private static final String screenRecordingsPath = System.getProperty("logsDirectory") + File.separator + "screen-recordings";
+    private static final String screenRecordingsPath = System.getProperty("logsDirectory") + File.separator + "screenrecordings";
 
     public static String getScreenRecordingsPath() {
         File screenRecordingsDir = new File(screenRecordingsPath);

@@ -3,7 +3,6 @@ package screens;
 import constants.TestConstants;
 import driver.DriverManager;
 import enums.MobileFindBy;
-import enums.MobilePlatformName;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import logger.MyLogger;
@@ -29,7 +28,7 @@ public class BaseScreen {
     protected void sendKeys(MobileElement mobileElement, String text) {
         waitForVisibility(mobileElement);
         clear(mobileElement);
-        MyLogger.infoExtentStep("Filling data in <b>" + mobileElement.getAttribute("name") + "</b>");
+        MyLogger.logInfoExtent("Filling data in <b>" + mobileElement.getAttribute("name") + "</b>");
         mobileElement.sendKeys(text);
     }
 
@@ -65,17 +64,18 @@ public class BaseScreen {
     }
 
     protected void clear(MobileElement element) {
-        MyLogger.infoExtentStep("Clearing Text from Input");
+        MyLogger.logInfoExtent("Clearing Text from Input");
         element.clear();
     }
 
     protected void click(MobileElement element){
-        MyLogger.infoExtentStep("Click on Element");
+        MyLogger.logDetailedInfoExtent("Click on Element : " + element.getAttribute("name"));
         ScreenshotService.captureScreenshotAsFile();
         element.click();
     }
 
     protected boolean isElementDisplayed(MobileElement element) {
+        MyLogger.logDetailedInfoExtent("Verify if element " + element.getAttribute("name")+ " is displayed on UI");
         return element.isDisplayed();
     }
 
@@ -100,21 +100,21 @@ public class BaseScreen {
                 .moveToElement(element)
                 .doubleClick()
                 .perform();
-     MyLogger.infoExtentStep("Double click on element : " + element);
+     MyLogger.logInfoExtent("Double click on element : " + element);
     }
 
     protected void performSingleTap(WebElement element) {
         new TouchActions(DriverManager.getDriver())
                 .singleTap(element)
                 .perform();
-        MyLogger.infoExtentStep("Single tap on element : " + element);
+        MyLogger.logInfoExtent("Single tap on element : " + element);
     }
 
     protected void performDoubleTap(WebElement element) {
         new TouchActions(DriverManager.getDriver())
                 .doubleTap(element)
                 .perform();
-        MyLogger.infoExtentStep("Double tap on element : " + element);
+        MyLogger.logInfoExtent("Double tap on element : " + element);
     }
 
     public String getElementText(MobileElement mobileElement) {

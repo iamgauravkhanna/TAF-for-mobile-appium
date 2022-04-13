@@ -1,7 +1,6 @@
 package android.project03;
 
 import base.BaseTest;
-import jdk.nashorn.internal.runtime.regexp.joni.ast.StringNode;
 import logger.MyLogger;
 import org.testng.annotations.Test;
 import screens.android.project03.LoginScreen;
@@ -19,6 +18,6 @@ public class SwagLabsTest extends BaseTest {
 
         ProductsScreen productsScreen = new ProductsScreen();
         String actualProductTitle = productsScreen.getTitle();
-        MyLogger.infoExtentStep("Title is : " + actualProductTitle);
+        MyLogger.logInfoExtent("Title is : " + actualProductTitle);
     }
 }
