@@ -19,13 +19,13 @@ TAF (Test Automation Framework) for Mobile using Appium
 - Multiple reports support - TestNG, ReportNG, Allure & Extent Reports
 - Usage of TestNG and WebDriver Event Listeners
 
-### To Run Android Tests
+### To Run Android Tests from CLI
 
 ```bash
 sh android-test-runner.sh
 ```
 
-### To Run iOS Tests
+### To Run iOS Tests from CLI
 
 ```bash
 sh ios-test-runner.sh
