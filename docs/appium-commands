@@ -1,0 +1,23 @@
+npm install -g appium@latest
+
+npm install -g appium@next
+
+which appium
+
+appium -v
+
+########## appium 2.0 related commannds
+
+appium driver install xcuitest
+
+appium driver install uiautomator2
+
+appium driver list --updates
+
+########## Plugins
+
+appium plugin list
+
+appium plugin install --source=npm appium-dashboard
+
+appium --address 127.0.0.1 --port 4723 --log-level debug --use-plugin=appium-dashboard -pa /wd/hub

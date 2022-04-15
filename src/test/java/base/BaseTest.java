@@ -15,7 +15,7 @@ public class BaseTest {
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuiteSetup() {
-        //AppiumServerUtils.startAppiumServer();
+//        AppiumServerUtils.startAppiumServer();
     }
 
     @BeforeMethod

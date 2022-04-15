@@ -24,8 +24,8 @@ public class AppiumServerUtils {
         builder.withLogFile(new File(getAppiumServerLogsPath()));
 
         service = AppiumDriverLocalService.buildService(builder);
-//        service.start();
-//        service.clearOutPutStreams();
+        service.start();
+        service.clearOutPutStreams();
     }
 
     public static void stopAppiumServer(){}
