@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import property.PropertyUtils;
 import reporting.ExtentTestManager;
 
-public class MyLogger {
+public class TestLogger {
 
     private static Logger Log = Logger.getLogger("CustomLog");
 

@@ -1,6 +1,6 @@
 package listeners;
 
-import logger.MyLogger;
+import logger.TestLogger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -11,7 +11,7 @@ public class ITestListenerImpl implements ITestListener {
     @Override
     public void onTestStart(ITestResult result) {
 
-        MyLogger.INFO(("Running Test Method " + result.getMethod().getMethodName() + "..."));
+        TestLogger.INFO(("Running Test Method " + result.getMethod().getMethodName() + "..."));
         ExtentTestManager.startTest(result.getMethod().getMethodName(),result.getMethod().getDescription());
     }
 

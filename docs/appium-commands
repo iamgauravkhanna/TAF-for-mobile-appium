@@ -20,4 +20,4 @@ appium plugin list
 
 appium plugin install --source=npm appium-dashboard
 
-appium --address 127.0.0.1 --port 4723 --log-level debug --use-plugin=appium-dashboard -pa /wd/hub
+appium --address 127.0.0.1 --port 4723 -pa /wd/hub --log-level debug --use-plugin=appium-dashboard

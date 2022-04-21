@@ -1,7 +1,7 @@
 package android.project03;
 
 import base.BaseTest;
-import logger.MyLogger;
+import logger.TestLogger;
 import org.testng.annotations.Test;
 import screens.android.project03.LoginScreen;
 import screens.android.project03.ProductsScreen;
@@ -18,6 +18,6 @@ public class SwagLabsTest extends BaseTest {
 
         ProductsScreen productsScreen = new ProductsScreen();
         String actualProductTitle = productsScreen.getTitle();
-        MyLogger.logInfoExtent("Title is : " + actualProductTitle);
+        TestLogger.logInfoExtent("Title is : " + actualProductTitle);
     }
 }

@@ -1,6 +1,6 @@
 package listeners;
 
-import logger.MyLogger;
+import logger.TestLogger;
 import org.testng.IAnnotationTransformer;
 import org.testng.annotations.*;
 
@@ -12,6 +12,6 @@ public class IAnnotationTransformerImpl implements IAnnotationTransformer {
     // Through this we can set configuration for each test. Defining data provider, chaning priority
     @Override
     public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
-        MyLogger.INFO("Is Test Enabled? " + annotation.getEnabled());
+        TestLogger.INFO("Is Test Enabled? " + annotation.getEnabled());
     }
 }

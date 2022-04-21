@@ -10,14 +10,14 @@ import screens.android.project01.ViewsScreen;
 public class TestClassA extends BaseTest {
 
     @Test(description = "Test Case #1 Verify View Screen", enabled = false)
-    public void SanityTestA(){
+    public void sanityTest(){
 
         StartScreen start = new StartScreen();
         start.clickOnView();
     }
 
-    @Test(description = "Test Case #2 check box example", enabled = true)
-    public void SanityTestB(){
+    @Test(description = "Test Case #2 check box example", enabled = false)
+    public void checkBoxExample(){
         StartScreen start = new StartScreen();
         start.clickOnView();
         ViewsScreen view = new ViewsScreen();

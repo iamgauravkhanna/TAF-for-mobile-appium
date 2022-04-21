@@ -7,7 +7,6 @@ import enums.ConfigJson;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-import logger.MyLogger;
 
 import java.io.File;
 import java.io.IOException;

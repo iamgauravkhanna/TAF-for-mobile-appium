@@ -3,9 +3,13 @@ package screens;
 import constants.TestConstants;
 import driver.DriverManager;
 import enums.MobileFindBy;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import logger.MyLogger;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
+import logger.TestLogger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -21,14 +25,14 @@ public class BaseScreen {
         PageFactory.initElements(new AppiumFieldDecorator(DriverManager.getDriver()), this);
     }
 
-    public void getUrl(String url){
+    public void getUrl(String url) {
         DriverManager.getDriver().get(url);
     }
 
     protected void sendKeys(MobileElement mobileElement, String text) {
         waitForVisibility(mobileElement);
         clear(mobileElement);
-        MyLogger.logInfoExtent("Filling data in <b>" + mobileElement.getAttribute("name") + "</b>");
+        TestLogger.logInfoExtent("Filling data in <b>" + mobileElement.getAttribute("name") + "</b>");
         mobileElement.sendKeys(text);
     }
 
@@ -37,7 +41,7 @@ public class BaseScreen {
         wait.until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
-    private MobileElement getMobileElement(String mobileElement, MobileFindBy mobileFindBy) {
+    public MobileElement getMobileElement(String mobileElement, MobileFindBy mobileFindBy) {
         switch (mobileFindBy) {
             case XPATH:
                 return DriverManager.getDriver().findElementByXPath(mobileElement);
@@ -55,6 +59,16 @@ public class BaseScreen {
         return null;
     }
 
+    private MobileElement getMobileElement(MobileFindBy mobileFindBy, String selector) {
+        switch (mobileFindBy) {
+            case ANDROID_UI_AUTOMATOR:
+                return (MobileElement) DriverManager.getDriver().findElement(MobileBy.AndroidUIAutomator(selector));
+            case IOS_UI_AUTOMATOR:
+                return (MobileElement) DriverManager.getDriver().findElement(MobileBy.iOSClassChain(selector));
+        }
+        return null;
+    }
+
     protected void enterValueAndPressEnter(MobileElement element, String value, String elementName) {
         try {
             clear(element);
@@ -64,18 +78,18 @@ public class BaseScreen {
     }
 
     protected void clear(MobileElement element) {
-        MyLogger.logInfoExtent("Clearing Text from Input");
+        TestLogger.logInfoExtent("Clearing Text from Input");
         element.clear();
     }
 
-    protected void click(MobileElement element){
-        MyLogger.logDetailedInfoExtent("Click on Element : " + element.getAttribute("name"));
+    protected void click(MobileElement element) {
+        TestLogger.logDetailedInfoExtent("Click on Element : " + element.getAttribute("name"));
         ScreenshotService.captureScreenshotAsFile();
         element.click();
     }
 
     protected boolean isElementDisplayed(MobileElement element) {
-        MyLogger.logDetailedInfoExtent("Verify if element " + element.getAttribute("name")+ " is displayed on UI");
+        TestLogger.logDetailedInfoExtent("Verify if element " + element.getAttribute("name") + " is displayed on UI");
         return element.isDisplayed();
     }
 
@@ -100,21 +114,28 @@ public class BaseScreen {
                 .moveToElement(element)
                 .doubleClick()
                 .perform();
-     MyLogger.logInfoExtent("Double click on element : " + element);
+        TestLogger.logInfoExtent("Double click on element : " + element);
     }
 
-    protected void performSingleTap(WebElement element) {
+    protected void performSingleTap(MobileElement element) {
         new TouchActions(DriverManager.getDriver())
                 .singleTap(element)
                 .perform();
-        MyLogger.logInfoExtent("Single tap on element : " + element);
+        TestLogger.logInfoExtent("Single tap on element : " + element);
     }
 
-    protected void performDoubleTap(WebElement element) {
-        new TouchActions(DriverManager.getDriver())
-                .doubleTap(element)
+    protected void performDoubleTap(MobileElement element) {
+        performMultipleTap(element, 2);
+        TestLogger.logInfoExtent("Double tap on element : " + element);
+    }
+
+    protected void performMultipleTap(MobileElement element, int tapCount) {
+        new TouchAction(DriverManager.getDriver())
+                .tap(TapOptions.tapOptions()
+                        .withElement(ElementOption.element(element))
+                        .withTapsCount(tapCount))
                 .perform();
-        MyLogger.logInfoExtent("Double tap on element : " + element);
+
     }
 
     public String getElementText(MobileElement mobileElement) {
@@ -128,6 +149,11 @@ public class BaseScreen {
             return mobileElement.getAttribute(TestConstants.LABEL);
         }
         return null;
+    }
+
+    public void scrollToElementAndClick(String value){
+        String selector = "new UiScrollable(new UiSelector()).scrollIntoView(" + "new UiSelector().text(\"" + value + "\"));";
+       getMobileElement(MobileFindBy.ANDROID_UI_AUTOMATOR,selector).click();
     }
 
 }
