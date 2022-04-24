@@ -2,14 +2,13 @@ package screens.android.project01;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import screens.BaseScreen;
 import screenshot.ScreenshotUtils;
 
 public class StartScreen extends BaseScreen {
 
-    @AndroidFindBy(accessibility="Views")
+    @iOSXCUITFindBy(accessibility="Views")
     private static MobileElement view;
 
     public void verifyOptions() {

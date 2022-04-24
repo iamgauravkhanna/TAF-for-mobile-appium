@@ -73,15 +73,16 @@ public class Drivers {
             capability.setCapability(CapabilityType.PLATFORM_NAME, Platform.IOS);
             capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);
             capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
-            capability.setCapability(IOSMobileCapabilityType.VERSION,"15.0");
+            capability.setCapability(MobileCapabilityType.PLATFORM_VERSION,"15.4");
             capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
+            //capability.setCapability("noReset", "true");
             //capability.setCapability(MobileCapabilityType.UDID, udid);
             //capability.setCapability(MobileCapabilityType.APP, FrameworkConstants.getIosAppPath());
             //capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
             //capability.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, port); // To set different port for each thread - This port is used to communicate with WebDriverAgent driver
             return new IOSDriver<>(new URL(getConfig(ConfigJson.APPIUM_URL)), capability);
         } catch (Exception e) {
-            throw new DriverInitializationException("Failed to initialize driver. Please check the desired capabilities", e);
+            throw new DriverInitializationException("Failed to initialize IOSDriverForNativeApp. Please check the desired capabilities", e);
         }
     }
 
@@ -93,6 +94,7 @@ public class Drivers {
             capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
             capability.setCapability(MobileCapabilityType.UDID, udid);
             capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
+            capability.setCapability("noReset", "true");
             capability.setCapability(CapabilityType.BROWSER_NAME, MobileBrowserName.SAFARI);
             capability.setCapability("webkitDebugProxyPort", port); // For web view/Safari browser testing on real device
 
