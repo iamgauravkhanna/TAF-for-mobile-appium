@@ -1,5 +1,6 @@
 package driver;
 
+import constants.TestConstants;
 import customExceptions.DriverInitializationException;
 import enums.ConfigJson;
 import enums.MobileBrowserName;
@@ -79,12 +80,11 @@ public class Drivers {
             capability.setCapability(CapabilityType.PLATFORM_NAME, Platform.IOS);
             capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);
             capability.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
-            capability.setCapability(MobileCapabilityType.PLATFORM_VERSION,"15.4");
+            capability.setCapability(MobileCapabilityType.PLATFORM_VERSION, "15.4");
             capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
-            //capability.setCapability("noReset", "true");
+            capability.setCapability(MobileCapabilityType.NO_RESET, getConfig(TestConstants.RESET_APP));
+            capability.setCapability(MobileCapabilityType.APP, TestConstants.iosAppPath + "SwagLabsMobileApp.app");
             //capability.setCapability(MobileCapabilityType.UDID, udid);
-            //capability.setCapability(MobileCapabilityType.APP, FrameworkConstants.getIosAppPath());
-            //capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
             //capability.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, port); // To set different port for each thread - This port is used to communicate with WebDriverAgent driver
             return new IOSDriver<>(new URL(getConfig(ConfigJson.APPIUM_URL)), capability);
         } catch (Exception e) {

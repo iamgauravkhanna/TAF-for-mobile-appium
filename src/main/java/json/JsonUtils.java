@@ -30,7 +30,6 @@ public final class JsonUtils {
 
     static void readJson(String jsonPath) {
         try {
-            //MyLogger.INFO("JsonPath : " + jsonPath);
             map = new ObjectMapper().readValue(new File(jsonPath),
                     new TypeReference<HashMap<String, String>>() {
                     });
@@ -46,5 +45,13 @@ public final class JsonUtils {
         }
         //MyLogger.INFO("returing property : " + key.name().toLowerCase());
         return map.get(key.name().toLowerCase());
+    }
+
+    public static String getConfig(String key) {
+        readJson(TestConstants.CONFIG_JSON_PATH);
+        if (Objects.isNull(map.get(key))) {
+            throw new JsonFileUsageException("Property name - " + key + " is not found. Please check the config.json");
+        }
+        return map.get(key.toLowerCase());
     }
 }

@@ -8,14 +8,14 @@ public class TestLogger {
 
     private static Logger Log = Logger.getLogger("CustomLog");
 
-    public static void logInfoExtent(String message) {
+    public static void INFO_EXTENT(String message) {
         INFO(message);
         ExtentTestManager.getTest().info(message);
     }
 
-    public static void logDetailedInfoExtent(String message) {
+    public static void INFO_DETAILED_EXTENT(String message) {
         INFO(message);
-        if(PropertyUtils.getPropertyValue("need_detailed_reporting").equalsIgnoreCase("yes")) {
+        if (PropertyUtils.getPropertyValue("need_detailed_reporting").equalsIgnoreCase("yes")) {
             ExtentTestManager.getTest().info(message);
         }
     }
@@ -29,5 +29,4 @@ public class TestLogger {
         Log.error(message);
         System.out.println(" *** ERROR : " + message);
     }
-
 }

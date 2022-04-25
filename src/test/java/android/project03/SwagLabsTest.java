@@ -18,6 +18,6 @@ public class SwagLabsTest extends BaseTest {
 
         ProductsScreen productsScreen = new ProductsScreen();
         String actualProductTitle = productsScreen.getTitle();
-        TestLogger.logInfoExtent("Title is : " + actualProductTitle);
+        TestLogger.INFO_EXTENT("Title is : " + actualProductTitle);
     }
 }

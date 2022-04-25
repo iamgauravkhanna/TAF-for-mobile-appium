@@ -1,4 +1,6 @@
 {
   "appium_url": "http://127.0.0.1:4723/wd/hub",
-  "bundle_id": "io.cloudgrey.the-app"
+  "bundle_id": "org.askomdch.SwagLabMobileApp",
+  "app_name": "SwagLabsMobileApp.app",
+  "reset.app.state" : true
 }

@@ -37,6 +37,7 @@ public class DriverFactory {
 
     public static void quitDriver() {
         if (Objects.nonNull(DriverManager.getDriver())) {
+            DriverManager.getDriver().closeApp();
             DriverManager.getDriver().quit();
             DriverManager.unload();
         }

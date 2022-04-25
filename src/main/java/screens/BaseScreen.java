@@ -32,7 +32,7 @@ public class BaseScreen {
     protected void sendKeys(MobileElement mobileElement, String text) {
         waitForVisibility(mobileElement);
         clear(mobileElement);
-        TestLogger.logInfoExtent("Filling data in <b>" + mobileElement.getAttribute("name") + "</b>");
+        TestLogger.INFO_EXTENT("Filling data in <b>" + mobileElement.getAttribute("name") + "</b>");
         mobileElement.sendKeys(text);
     }
 
@@ -78,18 +78,18 @@ public class BaseScreen {
     }
 
     protected void clear(MobileElement element) {
-        TestLogger.logInfoExtent("Clearing Text from Input");
+        TestLogger.INFO_EXTENT("Clearing Text from Input");
         element.clear();
     }
 
     protected void click(MobileElement element) {
-        TestLogger.logDetailedInfoExtent("Click on Element : " + element.getAttribute("name"));
+        TestLogger.INFO_DETAILED_EXTENT("Click on Element : " + element.getAttribute("name"));
         ScreenshotService.captureScreenshotAsFile();
         element.click();
     }
 
     protected boolean isElementDisplayed(MobileElement element) {
-        TestLogger.logDetailedInfoExtent("Verify if element " + element.getAttribute("name") + " is displayed on UI");
+        TestLogger.INFO_DETAILED_EXTENT("Verify if element " + element.getAttribute("name") + " is displayed on UI");
         return element.isDisplayed();
     }
 
@@ -114,19 +114,19 @@ public class BaseScreen {
                 .moveToElement(element)
                 .doubleClick()
                 .perform();
-        TestLogger.logInfoExtent("Double click on element : " + element);
+        TestLogger.INFO_EXTENT("Double click on element : " + element);
     }
 
     protected void performSingleTap(MobileElement element) {
         new TouchActions(DriverManager.getDriver())
                 .singleTap(element)
                 .perform();
-        TestLogger.logInfoExtent("Single tap on element : " + element);
+        TestLogger.INFO_EXTENT("Single tap on element : " + element);
     }
 
     protected void performDoubleTap(MobileElement element) {
         performMultipleTap(element, 2);
-        TestLogger.logInfoExtent("Double tap on element : " + element);
+        TestLogger.INFO_EXTENT("Double tap on element : " + element);
     }
 
     protected void performMultipleTap(MobileElement element, int tapCount) {

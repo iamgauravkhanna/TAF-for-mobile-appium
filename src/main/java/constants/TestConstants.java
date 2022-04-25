@@ -25,11 +25,13 @@ public final class TestConstants {
 
     private static final String androidApkPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "app" + File.separator + "Android.SauceLabs.Mobile.Sample.app.2.7.1.apk";
 
+    public static final String iosAppPath = PROJECT_PATH + File.separator + "apps" + File.separator + "ios" + File.separator;
+
     private static final String chromedriverExecutablesPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "executables" + File.separator + "chromedriver.exe";
 
     public static final String CONFIG_PROPERTIES_PATH = PROJECT_PATH + File.separator + "src/main/resources" + File.separator + "config" + File.separator + System.getProperty("operatingSystem") + File.separator + System.getProperty("project") + File.separator + "config.properties";
 
-    public static final String CONFIG_JSON_PATH = PROJECT_PATH + File.separator + "src/main/resources" + File.separator + "config" + File.separator + System.getProperty("operatingSystem") + File.separator + System.getProperty("project") + File.separator +  "config.json";
+    public static final String CONFIG_JSON_PATH = PROJECT_PATH + File.separator + "src/main/resources" + File.separator + "config" + File.separator + System.getProperty("operatingSystem") + File.separator + System.getProperty("project") + File.separator + "config.json";
 
     public static final long EXPLICIT_WAIT = 15;
 
@@ -79,4 +81,6 @@ public final class TestConstants {
 
     public static final String TEXT = "text";
     public static final String LABEL = "label";
+
+    public static final String RESET_APP = "reset.app.state";
 }
