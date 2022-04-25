@@ -69,6 +69,12 @@ public class Drivers {
 
     public static AppiumDriver<MobileElement> createIOSDriverForNativeApp(String device_name, String udid, int port) {
         try {
+
+//            File classpathRoot = new File(System.getProperty("user.dir"));
+//            File appDir = new File(classpathRoot, "/build/");
+//            File app = new File(appDir, "WordPress.app");
+//            capability.setCapability("app", app.getAbsolutePath());
+
             DesiredCapabilities capability = new DesiredCapabilities();
             capability.setCapability(CapabilityType.PLATFORM_NAME, Platform.IOS);
             capability.setCapability(MobileCapabilityType.DEVICE_NAME, device_name);

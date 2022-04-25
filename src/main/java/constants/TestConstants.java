@@ -27,9 +27,9 @@ public final class TestConstants {
 
     private static final String chromedriverExecutablesPath = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "executables" + File.separator + "chromedriver.exe";
 
-    public static final String CONFIG_PROPERTIES_PATH = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "config" + File.separator + System.getProperty("operatingSystem") + File.separator + System.getProperty("project") + File.separator + "config.properties";
+    public static final String CONFIG_PROPERTIES_PATH = PROJECT_PATH + File.separator + "src/main/resources" + File.separator + "config" + File.separator + System.getProperty("operatingSystem") + File.separator + System.getProperty("project") + File.separator + "config.properties";
 
-    public static final String CONFIG_JSON_PATH = PROJECT_PATH + File.separator + "src/test/resources" + File.separator + "config" + File.separator + System.getProperty("operatingSystem") + File.separator + System.getProperty("project") + File.separator +  "config.json";
+    public static final String CONFIG_JSON_PATH = PROJECT_PATH + File.separator + "src/main/resources" + File.separator + "config" + File.separator + System.getProperty("operatingSystem") + File.separator + System.getProperty("project") + File.separator +  "config.json";
 
     public static final long EXPLICIT_WAIT = 15;
 
