@@ -1,3 +1,5 @@
+ls -ltr
+
 cd reports
 
 rm -rf test-reports*

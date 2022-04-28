@@ -15,7 +15,7 @@ public class ViewsScreen extends BaseScreen {
     private MobileElement monitoredSwitch;
 
     public void clickOption() {
-        click(controls);
+        longPress(controls,5);
     }
 
     public void goToSwitches() {

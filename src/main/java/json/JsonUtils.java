@@ -15,10 +15,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public final class JsonUtils {
-    private static Map<String, String> map;
 
-    private JsonUtils() {
-    }
+    private static Map<String, String> map;
 
     public static String getValue(String key) {
         try {

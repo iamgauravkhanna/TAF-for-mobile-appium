@@ -12,7 +12,6 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <testng-version>7.5</testng-version>
-        <appium-java-client-version>7.6.0</appium-java-client-version>
         <lombok>1.18.22</lombok>
         <apache-poi>5.0.0</apache-poi>
         <jackson-version>2.13.1</jackson-version>
@@ -46,12 +45,6 @@
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <version>${json-path-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>${appium-java-client-version}</version>
         </dependency>
 
         <dependency>
@@ -89,6 +82,13 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.6.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>

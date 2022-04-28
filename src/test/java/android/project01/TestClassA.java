@@ -16,7 +16,7 @@ public class TestClassA extends BaseTest {
         start.clickOnView();
     }
 
-    @Test(description = "Test Case #2 check box example", enabled = false)
+    @Test(description = "Test Case #2 check box example", enabled = true)
     public void checkBoxExample(){
         StartScreen start = new StartScreen();
         start.clickOnView();

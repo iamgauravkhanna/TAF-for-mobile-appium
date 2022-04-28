@@ -2,7 +2,6 @@ package screens.android.project03;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import screens.BaseScreen;
 
 public class LoginScreen extends BaseScreen {
@@ -25,7 +24,7 @@ public class LoginScreen extends BaseScreen {
     }
 
     public void pressLoginBtn() {
-        click(btnLogin);
+        singleTap(btnLogin);
     }
 
 }

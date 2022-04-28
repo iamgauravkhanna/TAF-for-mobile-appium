@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Regression Suite - Project 01">
-    
+
     <listeners>
         <listener class-name="listeners.ITestListenerImpl"></listener>
         <listener class-name="listeners.IExecutionListenerImpl"></listener>
@@ -9,12 +9,9 @@
 
     <test name="Project 01 - Test 01" parallel="methods"
           thread-count="1">
-        <classes>
-<!--            <class name="android.project01.TestClassA" />-->
-<!--            <class name="android.project01.TestClassB" />-->
-<!--            <class name="android.project02.GoogleTest"></class>-->
-            <class name="android.project03.SwagLabsTest"></class>
-        </classes>
+        <packages>
+            <package name="android.project01"></package>
+        </packages>
     </test>
 
 </suite>

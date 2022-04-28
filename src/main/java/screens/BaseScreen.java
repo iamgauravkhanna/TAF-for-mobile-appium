@@ -7,8 +7,10 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
 import logger.TestLogger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -19,10 +21,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import screenshot.ScreenshotService;
 
+import java.time.Duration;
+
+import static constants.TestConstants.EXPLICIT_WAIT;
+
 public class BaseScreen {
+
+    protected WebDriverWait wait;
 
     protected BaseScreen() {
         PageFactory.initElements(new AppiumFieldDecorator(DriverManager.getDriver()), this);
+        wait = new WebDriverWait(DriverManager.getDriver(), 10);
     }
 
     public void getUrl(String url) {
@@ -37,7 +46,6 @@ public class BaseScreen {
     }
 
     public void waitForVisibility(MobileElement mobileElement) {
-        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), 10);
         wait.until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
@@ -93,20 +101,23 @@ public class BaseScreen {
         return element.isDisplayed();
     }
 
+    protected boolean isElementSelected(MobileElement element) {
+        TestLogger.INFO_DETAILED_EXTENT("Verify if element " + element.getAttribute("name") + " is selected on UI");
+        return element.isSelected();
+    }
+
+    protected boolean isElementEnabled(MobileElement element) {
+        TestLogger.INFO_DETAILED_EXTENT("Verify if element " + element.getAttribute("name") + " is enabled on UI");
+        return element.isEnabled();
+    }
+
+
     protected String getElementAttribute(MobileElement element, String attributeName) {
         return element.getAttribute(attributeName);
     }
 
     protected void getServerStatus() {
         DriverManager.getDriver().getStatus();
-    }
-
-    protected boolean isElementSelected(MobileElement element) {
-        return element.isSelected();
-    }
-
-    protected boolean isElementEnabled(MobileElement element) {
-        return element.isEnabled();
     }
 
     protected void doubleClickOnElement(WebElement element) {
@@ -117,14 +128,12 @@ public class BaseScreen {
         TestLogger.INFO_EXTENT("Double click on element : " + element);
     }
 
-    protected void performSingleTap(MobileElement element) {
-        new TouchActions(DriverManager.getDriver())
-                .singleTap(element)
-                .perform();
+    protected void singleTap(MobileElement element) {
+        performMultipleTap(element, 1);
         TestLogger.INFO_EXTENT("Single tap on element : " + element);
     }
 
-    protected void performDoubleTap(MobileElement element) {
+    protected void doubleTap(MobileElement element) {
         performMultipleTap(element, 2);
         TestLogger.INFO_EXTENT("Double tap on element : " + element);
     }
@@ -151,9 +160,28 @@ public class BaseScreen {
         return null;
     }
 
-    public void scrollToElementAndClick(String value){
+    public void scrollToElementAndClick(String value) {
         String selector = "new UiScrollable(new UiSelector()).scrollIntoView(" + "new UiSelector().text(\"" + value + "\"));";
-       getMobileElement(MobileFindBy.ANDROID_UI_AUTOMATOR,selector).click();
+        getMobileElement(MobileFindBy.ANDROID_UI_AUTOMATOR, selector).click();
+    }
+
+    public void longPress(MobileElement mobileElement, int duration){
+        new TouchAction<>(DriverManager.getDriver())
+                .longPress(LongPressOptions
+                        .longPressOptions()
+                        .withElement(ElementOption.element(mobileElement))
+                        .withDuration(Duration.ofSeconds(duration)))
+                .release()
+                .perform();
+        TestLogger.INFO("Long Press on element : " + mobileElement);
+    }
+
+    public void tapAtLocation(int xOffset, int yOffset){
+        new TouchAction<>(DriverManager.getDriver())
+                .tap(PointOption
+                        .point(xOffset,yOffset))
+                .perform();
+        TestLogger.INFO_EXTENT("tapAtLocation at xOffSet : " + xOffset + " && yOffSet : " + yOffset);
     }
 
 }

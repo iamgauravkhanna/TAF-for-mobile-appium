@@ -80,6 +80,7 @@ public final class TestConstants {
     public static final String LOG4J_PATH = System.getProperty("user.dir") + File.separator + "log4j.properties";
 
     public static final String TEXT = "text";
+
     public static final String LABEL = "label";
 
     public static final String RESET_APP = "reset.app.state";

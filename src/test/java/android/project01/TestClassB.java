@@ -8,7 +8,7 @@ import screens.android.project01.ViewsScreen;
 
 public class TestClassB extends BaseTest {
 
-    @Test(description = "Test Case #1 Tap Example", enabled = true)
+    @Test(description = "Test Case #1 Tap Example", enabled = false)
     public void tapSwitchOnOff(){
 
         StartScreen startScreen = new StartScreen();

@@ -1,5 +1,3 @@
-creating custom annotations
-
-using lombok
-
-segregate test screenshots class-method wise
+- creating custom annotations
+- using lombok
+- segregate test screenshots class-method wise

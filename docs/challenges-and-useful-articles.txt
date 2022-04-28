@@ -1,0 +1,2 @@
+Problem - Moving from Appium 7.x to 8.x (for selenium 4.x support) will break the project.
+Solution - https://github.com/appium/java-client/blob/master/docs/v7-to-v8-migration-guide.md

@@ -10,7 +10,7 @@ public class ControlScreen extends BaseScreen {
     private MobileElement theme;
 
     public void selectTheme() {
-        click(theme);
+        tapAtLocation(theme.getCenter().getX(),theme.getCenter().getY());
     }
 
 }

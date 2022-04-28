@@ -7,9 +7,6 @@ import java.util.Objects;
 
 public class DriverManager {
 
-    private DriverManager() {
-    }
-
     private static ThreadLocal<AppiumDriver<MobileElement>> threadLocalDriver = new ThreadLocal<>();
 
     public static AppiumDriver<MobileElement> getDriver() {
