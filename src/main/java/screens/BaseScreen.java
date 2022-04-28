@@ -1,17 +1,21 @@
 package screens;
 
+import com.google.common.collect.ImmutableMap;
 import constants.TestConstants;
 import driver.DriverManager;
 import enums.MobileFindBy;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import logger.TestLogger;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,6 +26,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import screenshot.ScreenshotService;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 import static constants.TestConstants.EXPLICIT_WAIT;
 
@@ -165,7 +171,7 @@ public class BaseScreen {
         getMobileElement(MobileFindBy.ANDROID_UI_AUTOMATOR, selector).click();
     }
 
-    public void longPress(MobileElement mobileElement, int duration){
+    public void longPress(MobileElement mobileElement, int duration) {
         new TouchAction<>(DriverManager.getDriver())
                 .longPress(LongPressOptions
                         .longPressOptions()
@@ -176,12 +182,78 @@ public class BaseScreen {
         TestLogger.INFO("Long Press on element : " + mobileElement);
     }
 
-    public void tapAtLocation(int xOffset, int yOffset){
+    public void tapAtLocation(int xOffset, int yOffset) {
         new TouchAction<>(DriverManager.getDriver())
                 .tap(PointOption
-                        .point(xOffset,yOffset))
+                        .point(xOffset, yOffset))
                 .perform();
         TestLogger.INFO_EXTENT("tapAtLocation at xOffSet : " + xOffset + " && yOffSet : " + yOffset);
     }
 
+    public void printMobileDeviceTime() {
+        TestLogger.INFO("Time : " + String.valueOf(DriverManager.getDriver().executeScript("mobile: getDeviceTime")));
+    }
+
+    public void printPermissions() {
+        TestLogger.INFO("List of Permissions : " + String.valueOf(DriverManager.getDriver().executeScript("mobile: getPermissions")));
+    }
+
+    public void pause() {
+        try {
+            TestLogger.INFO("Pausing for " + 5 + " seconds...");
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void printNotifications() {
+
+        Map<String, Object> res = (Map<String, Object>) DriverManager.getDriver().executeScript("mobile: getNotifications");
+        List<Map<String, Object>> notifications = (List<Map<String, Object>>) res.get("statusBarNotifications");
+        for (Map<String, Object> notification : notifications) {
+            Map<String, String> innerNotification = (Map<String, String>) notification.get("notification");
+            if (innerNotification.get("bigTitle") != null) {
+                System.out.println("Big Title : " + innerNotification.get("bigTitle"));
+            } else {
+                System.out.println("Title : " + innerNotification.get("title"));
+            }
+            if (innerNotification.get("bigText") != null) {
+                System.out.println("Big Text" + innerNotification.get("bigText"));
+            } else {
+                System.out.println("Text :" + innerNotification.get("text"));
+            }
+        }
+    }
+
+    public void swipe() {
+        Dimension dimension = DriverManager.getDriver().manage().window().getSize();
+        PointOption pointOptionStart = PointOption.point(dimension.width / 2, dimension.height / 2);
+        PointOption pointOptionEnd = PointOption.point((int) (dimension.width * 0.1), (int) (dimension.height * 0.1));
+        TouchAction touchAction = new TouchAction(DriverManager.getDriver());
+
+        touchAction
+                .press(pointOptionStart)
+                .waitAction(WaitOptions
+                        .waitOptions(Duration.ofSeconds(4)))
+                .moveTo(pointOptionEnd)
+                .release()
+                .perform();
+    }
+
+    /**
+     * Print Current Activity Name
+     */
+    public void getCurrentActivity() {
+        String activityName = ((AndroidDriver) DriverManager.getDriver()).currentActivity();
+        TestLogger.INFO("Current Activity : " + activityName);
+    }
+
+    /**
+     * Open Notifications on Android
+     */
+    public void openNotificationsOnAndroid() {
+        TestLogger.INFO("Open Notifications....");
+        ((AndroidDriver) DriverManager.getDriver()).openNotifications();
+    }
 }

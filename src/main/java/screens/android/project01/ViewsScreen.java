@@ -11,6 +11,9 @@ public class ViewsScreen extends BaseScreen {
     @AndroidFindBy(accessibility = "Controls")
     private MobileElement controls;
 
+    @AndroidFindBy(accessibility = "Gallery")
+    private MobileElement Gallery;
+
     @AndroidFindBy(id = "io.appium.android.apis:id/monitored_switch")
     private MobileElement monitoredSwitch;
 
@@ -20,6 +23,10 @@ public class ViewsScreen extends BaseScreen {
 
     public void goToSwitches() {
         scrollToElementAndClick("Switches");
+    }
+
+    public void goTab() {
+
     }
 
     public String getSwitchText() {

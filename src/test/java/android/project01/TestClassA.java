@@ -10,14 +10,14 @@ import screens.android.project01.ViewsScreen;
 public class TestClassA extends BaseTest {
 
     @Test(description = "Test Case #1 Verify View Screen", enabled = false)
-    public void sanityTest(){
+    public void sanityTest() {
 
         StartScreen start = new StartScreen();
         start.clickOnView();
     }
 
-    @Test(description = "Test Case #2 check box example", enabled = true)
-    public void checkBoxExample(){
+    @Test(description = "Test Case #2 check box example", enabled = false)
+    public void checkBoxExample() {
         StartScreen start = new StartScreen();
         start.clickOnView();
         ViewsScreen view = new ViewsScreen();
@@ -26,5 +26,29 @@ public class TestClassA extends BaseTest {
         controlScreen.selectTheme();
         DarkThemeScreen darkThemeScreen = new DarkThemeScreen();
         darkThemeScreen.selectCheckBox();
+    }
+
+    @Test(description = "Test Case for execute Scripts", enabled = true)
+    public void TestMethodC() {
+        StartScreen start = new StartScreen();
+        start.clickOnView();
+//        start.printMobileDeviceTime();
+//        start.pause();
+//        start.printPermissions();
+//        start.pause();
+        // start.printNotifications();
+        start.pause();
+        start.swipe();
+        start.pause();
+        start.getCurrentActivity();
+        start.openNotificationsOnAndroid();
+    }
+
+    @Test(description = "Test Case for scroll", enabled = false)
+    public void TestMethodD() {
+        StartScreen start = new StartScreen();
+        start.clickOnView();
+        ViewsScreen viewsScreen = new ViewsScreen();
+        viewsScreen.goTab();
     }
 }

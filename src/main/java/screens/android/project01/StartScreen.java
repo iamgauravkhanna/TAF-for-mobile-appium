@@ -4,6 +4,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import screens.BaseScreen;
 import screenshot.ScreenshotUtils;
+import utils.JavaUtil;
 
 public class StartScreen extends BaseScreen {
 
