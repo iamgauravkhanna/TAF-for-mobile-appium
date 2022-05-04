@@ -25,6 +25,9 @@ public class ViewsScreen extends BaseScreen {
     @AndroidFindBy(id = "io.appium.android.apis:id/monitored_switch")
     private MobileElement monitoredSwitch;
 
+    @AndroidFindBy(xpath = "//android.widget.NumberPicker[@index='0']")
+    private MobileElement date;
+
     public void clickOption() {
         longPress(controls, 5);
     }
@@ -32,6 +35,11 @@ public class ViewsScreen extends BaseScreen {
     public void goToSwitches() {
         scrollToElementAndClick("Switches");
     }
+
+    public void selectOption(String text){
+        scrollToElementAndClick(text);
+    }
+
 
     public void goTab() {
     }
@@ -89,5 +97,9 @@ public class ViewsScreen extends BaseScreen {
     }
 
     public void printDropDownValues() {
+    }
+
+    public void selectDay(String s) {
+        date.sendKeys(s);
     }
 }

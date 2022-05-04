@@ -51,4 +51,16 @@ public class TestClassA extends BaseTest {
         ViewsScreen viewsScreen = new ViewsScreen();
         viewsScreen.goTab();
     }
+
+    @Test(description = "Select Date and Time Example", enabled = false)
+    public void TestMethodE() {
+        StartScreen start = new StartScreen();
+        start.clickOnView();
+        ViewsScreen viewsScreen = new ViewsScreen();
+        viewsScreen.selectOption("Date Widgets");
+        viewsScreen.selectOption("1. Dialog");
+        viewsScreen.selectOption("change the date");
+        viewsScreen.selectDay("20");
+        viewsScreen.pause(3);
+    }
 }

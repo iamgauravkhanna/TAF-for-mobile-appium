@@ -60,11 +60,21 @@ public class TestClassB extends BaseTest {
         darkThemeScreen.printDropDownValues();
     }
 
-    @Test(description = "Alert Example", enabled = true)
+    @Test(description = "Alert Example", enabled = false)
     public void TestMethodE() {
         StartScreen startScreen = new StartScreen();
         startScreen.clickOnApp();
         AppScreen appScreen = new AppScreen();
         appScreen.clickOkOnAlert();
+    }
+
+    @Test(description = "Screen Rotation Example", enabled = false)
+    public void TestMethodF() {
+        StartScreen startScreen = new StartScreen();
+        startScreen.clickOnApp();
+        startScreen.rotateScreenToLANDSCAPE();
+        startScreen.pause();
+        startScreen.rotateScreenToPORTRAIT();
+        startScreen.pause();
     }
 }

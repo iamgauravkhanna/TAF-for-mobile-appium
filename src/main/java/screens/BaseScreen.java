@@ -57,6 +57,7 @@ public class BaseScreen {
     }
 
     public MobileElement getMobileElement(String selector, MobileFindBy mobileFindBy) {
+        pause();
         switch (mobileFindBy) {
             case XPATH:
                 return DriverManager.getDriver().findElementByXPath(selector);
@@ -187,6 +188,7 @@ public class BaseScreen {
     }
 
     public void scrollToElementAndClick(String value) {
+        pause(2);
         String selector = "new UiScrollable(new UiSelector()).scrollIntoView(" + "new UiSelector().text(\"" + value + "\"));";
         getMobileElement(MobileFindBy.ANDROID_UI_AUTOMATOR, selector).click();
     }
@@ -227,10 +229,21 @@ public class BaseScreen {
         }
     }
 
+    public void pause(int seconds) {
+        try {
+            TestLogger.INFO("Pausing for " + seconds + " seconds...");
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void printNotifications() {
 
-        Map<String, Object> res = (Map<String, Object>) DriverManager.getDriver().executeScript("mobile: getNotifications");
-        List<Map<String, Object>> notifications = (List<Map<String, Object>>) res.get("statusBarNotifications");
+        Map<String, Object> notificationList = (Map<String, Object>) DriverManager.getDriver().executeScript("mobile: getNotifications");
+
+        List<Map<String, Object>> notifications = (List<Map<String, Object>>) notificationList.get("statusBarNotifications");
+
         for (Map<String, Object> notification : notifications) {
             Map<String, String> innerNotification = (Map<String, String>) notification.get("notification");
             if (innerNotification.get("bigTitle") != null) {
@@ -269,13 +282,13 @@ public class BaseScreen {
         TestLogger.INFO("Current Activity : " + activityName);
     }
 
-    //Open Notifications on Android
     public void openNotificationsOnAndroid() {
         TestLogger.INFO("Open Notifications....");
         ((AndroidDriver) DriverManager.getDriver()).openNotifications();
     }
 
     public void pressHomeButton() {
+        TestLogger.INFO("Pressing Home Button");
         ImmutableMap pressHome = ImmutableMap.of("name", "home");
         DriverManager.getDriver().executeScript("mobile: pressButton", pressHome);
     }
@@ -285,10 +298,12 @@ public class BaseScreen {
     }
 
     public void rotateScreenToLANDSCAPE() {
+        TestLogger.INFO("Switch ScreenOrientation to LANDSCAPE");
         DriverManager.getDriver().rotate(ScreenOrientation.LANDSCAPE);
     }
 
     public void rotateScreenToPORTRAIT() {
+        TestLogger.INFO("Switch ScreenOrientation to PORTRAIT");
         DriverManager.getDriver().rotate(ScreenOrientation.PORTRAIT);
     }
 

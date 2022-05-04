@@ -7,7 +7,7 @@ import screens.ios.project02.LoginScreen;
 
 public class TestClassA extends BaseTest {
 
-    @Test(description = "Sanity Test",enabled = true)
+    @Test(description = "Sanity Test",enabled = false)
     public void TestMethodA(){
         LoginScreen loginScreen = new LoginScreen();
         loginScreen.enterUserName("standard_user");
