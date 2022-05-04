@@ -17,6 +17,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import logger.TestLogger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.touch.TouchActions;
@@ -55,20 +56,38 @@ public class BaseScreen {
         wait.until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
-    public MobileElement getMobileElement(String mobileElement, MobileFindBy mobileFindBy) {
+    public MobileElement getMobileElement(String selector, MobileFindBy mobileFindBy) {
         switch (mobileFindBy) {
             case XPATH:
-                return DriverManager.getDriver().findElementByXPath(mobileElement);
+                return DriverManager.getDriver().findElementByXPath(selector);
             case CSS:
-                return DriverManager.getDriver().findElementByCssSelector(mobileElement);
+                return DriverManager.getDriver().findElementByCssSelector(selector);
             case ID:
-                return DriverManager.getDriver().findElementById(mobileElement);
+                return DriverManager.getDriver().findElementById(selector);
             case NAME:
-                return DriverManager.getDriver().findElementByName(mobileElement);
+                return DriverManager.getDriver().findElementByName(selector);
             case ACCESSIBILITY_ID:
-                return DriverManager.getDriver().findElementByAccessibilityId(mobileElement);
+                return DriverManager.getDriver().findElementByAccessibilityId(selector);
             case CLASS:
-                return DriverManager.getDriver().findElementByClassName(mobileElement);
+                return DriverManager.getDriver().findElementByClassName(selector);
+        }
+        return null;
+    }
+
+    public List<MobileElement> getMobileElements(String selector, MobileFindBy mobileFindBy) {
+        switch (mobileFindBy) {
+            case XPATH:
+                return DriverManager.getDriver().findElementsByXPath(selector);
+            case CSS:
+                return DriverManager.getDriver().findElementsByCssSelector(selector);
+            case ID:
+                return DriverManager.getDriver().findElementsById(selector);
+            case NAME:
+                return DriverManager.getDriver().findElementsByName(selector);
+            case ACCESSIBILITY_ID:
+                return DriverManager.getDriver().findElementsByAccessibilityId(selector);
+            case CLASS:
+                return DriverManager.getDriver().findElementsByClassName(selector);
         }
         return null;
     }
@@ -97,6 +116,7 @@ public class BaseScreen {
     }
 
     protected void click(MobileElement element) {
+        waitForVisibility(element);
         TestLogger.INFO_DETAILED_EXTENT("Click on Element : " + element.getAttribute("name"));
         ScreenshotService.captureScreenshotAsFile();
         element.click();
@@ -249,11 +269,27 @@ public class BaseScreen {
         TestLogger.INFO("Current Activity : " + activityName);
     }
 
-    /**
-     * Open Notifications on Android
-     */
+    //Open Notifications on Android
     public void openNotificationsOnAndroid() {
         TestLogger.INFO("Open Notifications....");
         ((AndroidDriver) DriverManager.getDriver()).openNotifications();
     }
+
+    public void pressHomeButton() {
+        ImmutableMap pressHome = ImmutableMap.of("name", "home");
+        DriverManager.getDriver().executeScript("mobile: pressButton", pressHome);
+    }
+
+    public void hideKeyboard() {
+        DriverManager.getDriver().hideKeyboard();
+    }
+
+    public void rotateScreenToLANDSCAPE() {
+        DriverManager.getDriver().rotate(ScreenOrientation.LANDSCAPE);
+    }
+
+    public void rotateScreenToPORTRAIT() {
+        DriverManager.getDriver().rotate(ScreenOrientation.PORTRAIT);
+    }
+
 }

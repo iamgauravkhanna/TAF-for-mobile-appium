@@ -1,2 +1,5 @@
-Problem - Moving from Appium 7.x to 8.x (for selenium 4.x support) will break the project.
-Solution - https://github.com/appium/java-client/blob/master/docs/v7-to-v8-migration-guide.md
+# Moving from Appium 7.x to 8.x (for selenium 4.x support) will break the project.
+- https://github.com/appium/java-client/blob/master/docs/v7-to-v8-migration-guide.md
+
+# Generating Touch Gestures to Zoom In and Out
+- https://appiumpro.com/editions/67-generating-touch-gestures-to-zoom-in-and-out-on-google-maps

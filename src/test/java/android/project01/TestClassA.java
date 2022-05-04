@@ -28,7 +28,7 @@ public class TestClassA extends BaseTest {
         darkThemeScreen.selectCheckBox();
     }
 
-    @Test(description = "Test Case for execute Scripts", enabled = true)
+    @Test(description = "Test Case for execute Scripts", enabled = false)
     public void TestMethodC() {
         StartScreen start = new StartScreen();
         start.clickOnView();

@@ -9,3 +9,6 @@ export ANDROID_SDK=$HOME/Library/Android/sdk
 export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 
 emulator -avd Nexus-6-API-29
+
+# current activity details
+adb shell "dumpsys activity activities | grep mResumedActivity"

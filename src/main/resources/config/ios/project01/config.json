@@ -1,4 +1,5 @@
 {
   "appium_url": "http://127.0.0.1:4723/wd/hub",
-  "bundle_id": "com.apple.Preferences"
+  "bundle_id": "com.apple.Preferences",
+  "reset.app.state": false
 }

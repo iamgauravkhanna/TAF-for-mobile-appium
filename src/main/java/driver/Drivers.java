@@ -83,7 +83,7 @@ public class Drivers {
             capability.setCapability(MobileCapabilityType.PLATFORM_VERSION, "15.4");
             capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
             capability.setCapability(MobileCapabilityType.NO_RESET, getConfig(TestConstants.RESET_APP));
-            capability.setCapability(MobileCapabilityType.APP, TestConstants.iosAppPath + "SwagLabsMobileApp.app");
+            //capability.setCapability(MobileCapabilityType.APP, TestConstants.iosAppPath + "SwagLabsMobileApp.app");
             //capability.setCapability(MobileCapabilityType.UDID, udid);
             //capability.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, port); // To set different port for each thread - This port is used to communicate with WebDriverAgent driver
             return new IOSDriver<>(new URL(getConfig(ConfigJson.APPIUM_URL)), capability);
