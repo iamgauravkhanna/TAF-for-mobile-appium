@@ -5,9 +5,7 @@ emulator -list-avds
 # to start emulator from CLI
 
 export ANDROID_SDK=$HOME/Library/Android/sdk
-
-export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
-
+export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PAT
 emulator -avd Nexus-6-API-29
 
 # current activity details

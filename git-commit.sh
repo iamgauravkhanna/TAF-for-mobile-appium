@@ -18,7 +18,7 @@ git add .
 
 git status
 
-foo="changes-"$RANDOM
+foo="changes-"$(date +%Y-%m-%d-%H-%M-%S)
 
 git commit -m $foo
 
