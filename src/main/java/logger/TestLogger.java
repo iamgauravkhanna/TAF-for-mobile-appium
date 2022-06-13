@@ -22,7 +22,9 @@ public class TestLogger {
 
     public static void INFO(String message) {
         Log.info(message);
-        System.out.println(" *** INFO : " + message);
+        if (PropertyUtils.getPropertyValue("need_detailed_reporting").equalsIgnoreCase("yes")) {
+            System.out.println(" *** INFO : " + message);
+        }
     }
 
     public static void ERROR(String message) {
