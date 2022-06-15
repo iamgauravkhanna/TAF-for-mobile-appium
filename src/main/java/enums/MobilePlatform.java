@@ -1,6 +1,6 @@
 package enums;
 
-public enum MobilePlatformName {
+public enum MobilePlatform {
 
     ANDROID,
     ANDROID_WEB,

@@ -3,7 +3,7 @@ package driver;
 import constants.TestConstants;
 import customExceptions.DriverInitializationException;
 import enums.ConfigJson;
-import enums.MobileBrowserName;
+import enums.MobileBrowser;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -55,7 +55,7 @@ public class Drivers {
             //capability.setCapability(MobileCapabilityType.UDID, udid);
 //            capability.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, getConfig(ConfigJson.APP_PACKAGE));
 //            capability.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, getConfig(ConfigJson.APP_ACTIVITY));
-            capability.setCapability(CapabilityType.BROWSER_NAME, MobileBrowserName.CHROME);
+            capability.setCapability(CapabilityType.BROWSER_NAME, MobileBrowser.CHROME);
             capability.setCapability(AndroidMobileCapabilityType.CHROMEDRIVER_PORT, port); // For Web view/Chrome browser to launch the browser on different port
             capability.setCapability("noReset", "true"); // this should be depenedent on property
             if (emulator.equalsIgnoreCase("yes")) {
@@ -101,7 +101,7 @@ public class Drivers {
             capability.setCapability(MobileCapabilityType.UDID, udid);
             capability.setCapability(IOSMobileCapabilityType.BUNDLE_ID, getConfig(ConfigJson.BUNDLE_ID));
             capability.setCapability("noReset", "true");
-            capability.setCapability(CapabilityType.BROWSER_NAME, MobileBrowserName.SAFARI);
+            capability.setCapability(CapabilityType.BROWSER_NAME, MobileBrowser.SAFARI);
             capability.setCapability("webkitDebugProxyPort", port); // For web view/Safari browser testing on real device
 
             return new IOSDriver<>(new URL(getConfig(ConfigJson.APPIUM_URL)), capability);

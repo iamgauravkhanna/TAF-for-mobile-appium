@@ -3,16 +3,19 @@ package factory;
 import customExceptions.DriverInitializationException;
 import driver.DriverManager;
 import driver.Drivers;
-import enums.MobilePlatformName;
+import enums.MobilePlatform;
 import io.appium.java_client.AppiumDriver;
 
 import java.util.Objects;
 
+/**
+ * AKA BrowserFactory in Selenium
+ */
 public class DriverFactory {
 
     private DriverFactory() {}
 
-    public static void initializeDriver(MobilePlatformName mobilePlatformName, String devicename, String udid, int port, String emulator) {
+    public static void initializeDriver(MobilePlatform mobilePlatformName, String devicename, String udid, int port, String emulator) {
 
         AppiumDriver driver;
 

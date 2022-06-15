@@ -1,6 +1,6 @@
 package enums;
 
-public enum MobileBrowserName {
+public enum MobileBrowser {
     CHROME,
     SAFARI
 }

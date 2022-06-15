@@ -8,9 +8,9 @@ import java.io.*;
 import java.util.Objects;
 import java.util.Properties;
 
-public class PropertyUtils {
+public class PropertyUtil {
 
-    private PropertyUtils() {
+    private PropertyUtil() {
     }
 
     private static final Properties property = new Properties();

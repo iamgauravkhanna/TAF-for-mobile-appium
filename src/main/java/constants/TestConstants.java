@@ -2,15 +2,11 @@ package constants;
 
 import enums.ConfigProperties;
 import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import property.PropertyUtils;
+import property.PropertyUtil;
 import utils.JavaUtil;
 
 import java.io.File;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class TestConstants {
@@ -44,7 +40,7 @@ public final class TestConstants {
     private static final String extentReportPath = PROJECT_PATH + File.separator + "extent-test-report";
 
     public static String getExtentReportPath() {
-        if (PropertyUtils.getPropertyValue(ConfigProperties.OVERRIDE_REPORTS).equalsIgnoreCase("yes")) {
+        if (PropertyUtil.getPropertyValue(ConfigProperties.OVERRIDE_REPORTS).equalsIgnoreCase("yes")) {
             return extentReportPath + File.separator + "index.html";
         } else {
             return extentReportPath + File.separator + JavaUtil.getCurrentDateTime() + File.separator + "index.html";
@@ -54,7 +50,7 @@ public final class TestConstants {
     private static final String appiumServerLogsPath = PROJECT_PATH + File.separator + "server-logs";
 
     public static String getAppiumServerLogsPath() {
-        if (PropertyUtils.getPropertyValue(ConfigProperties.OVERRIDE_SERVER_LOG).equalsIgnoreCase("yes")) {
+        if (PropertyUtil.getPropertyValue(ConfigProperties.OVERRIDE_SERVER_LOG).equalsIgnoreCase("yes")) {
             return appiumServerLogsPath + File.separator + "server.log";
         } else {
             return appiumServerLogsPath + File.separator + JavaUtil.getCurrentDateTime() + File.separator + "server.log";

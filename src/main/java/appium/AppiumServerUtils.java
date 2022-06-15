@@ -1,4 +1,4 @@
-package utils;
+package appium;
 
 import constants.TestConstants;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
